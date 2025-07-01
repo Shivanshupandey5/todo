@@ -1,467 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ultimate To-Do App</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    :root {
-      --bg-color: linear-gradient(to right, #1e3c72, #2a5298);
-      --card-bg: #ffffff12;
-      --text-color: #fff;
-      --accent: #00c897;
-    }
-
-    body.light-mode {
-      --bg-color: #f0f0f0;
-      --card-bg: #fff;
-      --text-color: #111;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      transition: background 0.3s;
-    }
-
-    .app-container {
-      background-color: var(--card-bg);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 800px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .input-group {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    input[type="text"], input[type="date"], select {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      flex: 1;
-    }
-
-    button.add-btn, .toggle-mode, .ai-btn {
-      background-color: var(--accent);
-      border: none;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #fff;
-    }
-
-    .filter-group {
-      margin-bottom: 1rem;
-    }
-
-    ul.task-list {
-      list-style: none;
-      padding: 0;
-      margin-top: 1.5rem;
-    }
-
-    li.task-item {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 1rem;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: grab;
-      transition: transform 0.2s ease;
-    }
-
-    li.task-item:hover {
-      transform: scale(1.02);
-    }
-
-    .task-left {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .task-main {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .task-left input[type="checkbox"] {
-      transform: scale(1.2);
-    }
-
-    .task-left span {
-      font-size: 1rem;
-    }
-
-    .task-left.completed span {
-      text-decoration: line-through;
-      color: #ccc;
-    }
-
-    .task-date, .countdown {
-      font-size: 0.8rem;
-      color: #bbb;
-      margin-left: 24px;
-    }
-
-    .task-actions {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.task-actions button {
-  background-color: rgba(255, 255, 255, 0.1); /* subtle background */
-  border: 1px solid #ccc;
-  padding: 6px;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #fff;
-  transition: background 0.2s ease;
-}
-
-.task-actions button:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-
-    .priority-tag {
-      font-size: 0.8rem;
-      margin-left: 10px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: white;
-    }
-
-    .high { background: red; }
-    .medium { background: orange; }
-    .low { background: green; }
-
-    .progress-container {
-      margin-top: 1.5rem;
-    }
-
-    .progress-bar {
-      background-color: #444;
-      border-radius: 5px;
-      overflow: hidden;
-      height: 10px;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      background-color: var(--accent);
-      width: 0%;
-      transition: width 0.3s;
-    }
-
-    .progress-text {
-      text-align: right;
-      font-size: 0.9rem;
-      margin-top: 0.4rem;
-    }
-
-    .edit-btn, .delete-btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #fff;
-    }
-
-    .edit-btn {
-    background-color: #007bff;
-    }
-
-    .edit-btn:hover {
-    background-color: #0056b3;
-    }
-
-    .delete-btn {
-    background-color: #dc3545;
-    }
-
-    .delete-btn:hover {
-    background-color: #a71d2a;
-    }
-
-    .edit-input {
-    padding: 4px 8px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    }
-
-  </style>
-</head>
-<body>
-  <div class="app-container">
-    <div class="top-bar">
-      <h1>🌟 Ultimate To-Do App</h1>
-      <button class="toggle-mode" onclick="toggleMode()">🌓</button>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate To-Do App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    </head>
+    <body>
+    <div class="app-container">
+        <div class="top-bar">
+        <h1>🌟 Ultimate To-Do App</h1>
+        <button class="toggle-mode" onclick="toggleMode()">🌓</button>
+        </div>
+        <div class="input-group">
+        <input type="text" id="taskInput" placeholder="What do you need to do?">
+        <select id="priorityInput">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <input type="date" id="dueDateInput">
+        <button class="add-btn" onclick="addTask()">Add</button>
+        <button class="ai-btn" onclick="suggestTask()">🤖 Suggest</button>
+        </div>
+        <div class="filter-group">
+        <label for="filter">Filter:</label>
+        <select id="filter" onchange="renderTasks()">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+        </select>
+        </div>
+        <ul class="task-list" id="taskList"></ul>
+        <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% Complete</div>
+        </div>
     </div>
-    <div class="input-group">
-      <input type="text" id="taskInput" placeholder="What do you need to do?">
-      <select id="priorityInput">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-      <input type="date" id="dueDateInput">
-      <button class="add-btn" onclick="addTask()">Add</button>
-      <button class="ai-btn" onclick="suggestTask()">🤖 Suggest</button>
-    </div>
-    <div class="filter-group">
-      <label for="filter">Filter:</label>
-      <select id="filter" onchange="renderTasks()">
-        <option value="all">All</option>
-        <option value="completed">Completed</option>
-        <option value="pending">Pending</option>
-      </select>
-    </div>
-    <ul class="task-list" id="taskList"></ul>
-    <div class="progress-container">
-      <div class="progress-bar">
-        <div class="progress-bar-fill" id="progressBar"></div>
-      </div>
-      <div class="progress-text" id="progressText">0% Complete</div>
-    </div>
-  </div>
 
-<audio id="ping" preload="auto">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3969b2707b.mp3?filename=correct-2-46134.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+        <audio id="ping" preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3969b2707b.mp3?filename=correct-2-46134.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+        </audio>
 
-  <script>
-  const taskInput = document.getElementById('taskInput');
-  const taskList = document.getElementById('taskList');
-  const progressBar = document.getElementById('progressBar');
-  const progressText = document.getElementById('progressText');
-  const priorityInput = document.getElementById('priorityInput');
-  const filterSelect = document.getElementById('filter');
-  const dueDateInput = document.getElementById('dueDateInput');
-  const pingSound = document.getElementById('ping');
 
-  let tasks = [];
 
-  function updateProgress() {
-    const total = tasks.length;
-    const completed = tasks.filter(t => t.completed).length;
-    const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
-    progressBar.style.width = `${percent}%`;
-    progressText.textContent = `${percent}% Complete`;
-  }
-
-  function getCountdown(dueDate) {
-    const now = new Date();
-    const due = new Date(dueDate);
-    const diff = due - now;
-    if (diff <= 0) return "Overdue";
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    return days === 0 ? "Due today" : `${days} day(s) left`;
-  }
-
-  function renderTasks() {
-    taskList.innerHTML = '';
-    const filter = filterSelect.value;
-
-    tasks.forEach((task, index) => {
-      if ((filter === 'completed' && !task.completed) || (filter === 'pending' && task.completed)) return;
-
-      const li = document.createElement('li');
-      li.className = 'task-item';
-      li.draggable = true;
-
-      li.ondragstart = (e) => e.dataTransfer.setData('text/plain', index);
-      li.ondragover = (e) => e.preventDefault();
-      li.ondrop = (e) => {
-        const from = parseInt(e.dataTransfer.getData('text'));
-        const draggedTask = tasks.splice(from, 1)[0];
-        tasks.splice(index, 0, draggedTask);
-        renderTasks();
-        updateProgress();
-      };
-
-      const left = document.createElement('div');
-      left.className = 'task-left';
-      if (task.completed) left.classList.add('completed');
-
-      const mainRow = document.createElement('div');
-      mainRow.className = 'task-main';
-
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = task.completed;
-      checkbox.onchange = () => {
-        task.completed = checkbox.checked;
-        pingSound.play();
-        renderTasks();
-        updateProgress();
-      };
-
-      const span = document.createElement('span');
-      span.textContent = task.text;
-
-      const tag = document.createElement('span');
-      tag.className = `priority-tag ${task.priority}`;
-      tag.textContent = task.priority;
-
-      mainRow.appendChild(checkbox);
-      mainRow.appendChild(span);
-      mainRow.appendChild(tag);
-
-      const dateInfo = document.createElement('div');
-      dateInfo.className = 'task-date';
-      dateInfo.textContent = `Due: ${task.due || 'N/A'}`;
-
-      const countdown = document.createElement('div');
-      countdown.className = 'countdown';
-      countdown.textContent = task.due ? getCountdown(task.due) : '';
-
-      left.appendChild(mainRow);
-      left.appendChild(dateInfo);
-      left.appendChild(countdown);
-
-      const actions = document.createElement('div');
-      actions.className = 'task-actions';
-
-      const editBtn = document.createElement('button');
-      editBtn.textContent = 'Edit';
-      editBtn.className = 'edit-btn';
-      editBtn.onclick = () => {
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = task.text;
-        input.className = 'edit-input';
-        input.onkeydown = (e) => {
-          if (e.key === 'Enter') {
-            task.text = input.value.trim();
-            task.notified = false; // reset for notification
-            renderTasks();
-          }
-        };
-        input.onblur = () => {
-          task.text = input.value.trim();
-          task.notified = false;
-          renderTasks();
-        };
-        span.replaceWith(input);
-        input.focus();
-      };
-
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = 'Delete';
-      deleteBtn.className = 'delete-btn';
-      deleteBtn.onclick = () => {
-        tasks.splice(index, 1);
-        pingSound.play();
-        renderTasks();
-        updateProgress();
-      };
-
-      actions.appendChild(editBtn);
-      actions.appendChild(deleteBtn);
-
-      li.appendChild(left);
-      li.appendChild(actions);
-      taskList.appendChild(li);
-    });
-  }
-
-  function addTask() {
-    const text = taskInput.value.trim();
-    const priority = priorityInput.value;
-    const due = dueDateInput.value;
-    if (text !== '') {
-      tasks.push({ text, priority, due, completed: false, notified: false });
-      taskInput.value = '';
-      dueDateInput.value = '';
-      pingSound.play();
-      renderTasks();
-      updateProgress();
-    }
-  }
-
-  function toggleMode() {
-    document.body.classList.toggle('light-mode');
-  }
-
-  function suggestTask() {
-    const ideas = [
-      "Organize your desk",
-      "Take a 10-minute walk",
-      "Call a friend",
-      "Read 5 pages of a book",
-      "Clear email inbox"
-    ];
-    taskInput.value = ideas[Math.floor(Math.random() * ideas.length)];
-  }
-
-  function checkForDueTasks() {
-    const now = new Date();
-    tasks.forEach(task => {
-      if (task.due && !task.notified && !task.completed) {
-        const due = new Date(task.due);
-        const diff = due - now;
-        if (diff <= 0 && Notification.permission === 'granted') {
-          new Notification('🔔 Task Reminder', {
-            body: `${task.text} is due or overdue!`
-          });
-          task.notified = true;
-        }
-      }
-    });
-  }
-
-  // Trigger countdown and notification updates
-  setInterval(renderTasks, 60000);
-  setInterval(checkForDueTasks, 60000);
-
-  // Allow enter key to add task
-  taskInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') addTask();
-  });
-
-  // Request browser notification permission once on load
-  if ('Notification' in window && Notification.permission !== 'granted') {
-    Notification.requestPermission();
-  }
-</script>
-
-</body>
-</html>
+    </body>
+    </html>
