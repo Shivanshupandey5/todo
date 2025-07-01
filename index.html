@@ -7,48 +7,48 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    </head>
-    <body>
+</head>
+<body>
     <div class="app-container">
         <div class="top-bar">
-        <h1>🌟 Ultimate To-Do App</h1>
-        <button class="toggle-mode" onclick="toggleMode()">🌓</button>
+            <h1>🌟 Ultimate To-Do App</h1>
+            <button class="toggle-mode" onclick="toggleMode()">🌓</button>
         </div>
         <div class="input-group">
-        <input type="text" id="taskInput" placeholder="What do you need to do?">
-        <select id="priorityInput">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select>
-        <input type="date" id="dueDateInput">
-        <button class="add-btn" onclick="addTask()">Add</button>
-        <button class="ai-btn" onclick="suggestTask()">🤖 Suggest</button>
+            <input type="text" id="taskInput" placeholder="What do you need to do?">
+            <select id="priorityInput">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <input type="date" id="dueDateInput">
+            <button class="add-btn" onclick="addTask()">Add</button>
+            <button class="ai-btn" onclick="suggestTask()">🤖 Suggest</button>
         </div>
         <div class="filter-group">
-        <label for="filter">Filter:</label>
-        <select id="filter" onchange="renderTasks()">
-            <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="pending">Pending</option>
-        </select>
+            <label for="filter">Filter:</label>
+            <select id="filter" onchange="renderTasks()">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+            </select>
         </div>
         <ul class="task-list" id="taskList"></ul>
         <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-bar-fill" id="progressBar"></div>
-        </div>
-        <div class="progress-text" id="progressText">0% Complete</div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% Complete</div>
         </div>
     </div>
-
-        <audio id="ping" preload="auto">
+    
+    <audio id="ping" preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3969b2707b.mp3?filename=correct-2-46134.mp3" type="audio/mp3">
         Your browser does not support the audio element.
-        </audio>
-
-
-
+    </audio>
+    
+    
+    
+    <script src="script.js"></script>
     </body>
     </html>
